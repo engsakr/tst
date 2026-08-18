@@ -1,0 +1,30 @@
+project:
+  key: IVE
+  name: Intelligent Virtual Examiner
+  type: microservices
+  delivery_model: scrum
+  sprint_length: 2w
+  default_branch: develop
+framework:
+  source: git@github.com:your-org/ai-sdlc-framework.git
+  version: v0.1.0
+  target_dir: .aisdlc/framework
+ai_runtimes:
+  codex:
+    enabled: true
+    target_file: AGENTS.md
+  claude:
+    enabled: true
+    target_dir: .claude
+    materialize_agents: true
+    materialize_commands: true
+  generic:
+    enabled: true
+    target_file: AI_CONTEXT.md
+gates:
+  enabled: true
+  reports_dir: .aisdlc/generated/reports
+  prompts_dir: .aisdlc/generated/prompts
+runtime:
+  generated_dir: .aisdlc/generated
+  cache_dir: .aisdlc/cache

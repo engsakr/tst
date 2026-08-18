@@ -1,0 +1,51 @@
+{
+  "code" : "CRM",
+  "name" : "CRM",
+  "status" : "INCEPTION",
+  "currentPhase" : 1,
+  "health" : "ON_TRACK",
+  "framework" : "framework/",
+  "governance" : "governance/",
+  "artifactsRoot" : "artifacts/",
+  "artifacts" : [ {
+    "key" : "idea-brief",
+    "type" : "Idea Brief",
+    "phase" : "Idea",
+    "sprintId" : null,
+    "path" : "artifacts/lifecycle/01-idea/idea-brief.md",
+    "status" : "MISSING",
+    "version" : 0,
+    "requiredSections" : [ "Problem", "Proposed Solution", "Target Users", "Success Metrics", "Open Questions" ],
+    "present" : false
+  }, {
+    "key" : "brd",
+    "type" : "Business Requirements",
+    "phase" : "Business Analysis",
+    "sprintId" : null,
+    "path" : "artifacts/lifecycle/02-business-analysis/brd.md",
+    "status" : "MISSING",
+    "version" : 0,
+    "requiredSections" : [ "Business Context", "Stakeholders", "Business Requirements", "Constraints", "Open Questions" ],
+    "present" : false
+  }, {
+    "key" : "prd",
+    "type" : "Product Requirements",
+    "phase" : "Requirements",
+    "sprintId" : null,
+    "path" : "artifacts/lifecycle/03-requirements/prd.md",
+    "status" : "MISSING",
+    "version" : 0,
+    "requiredSections" : [ "Overview", "User Stories", "Functional Requirements", "Non-Functional Requirements", "Acceptance Criteria", "Open Questions" ],
+    "present" : false
+  }, {
+    "key" : "hld",
+    "type" : "High-Level Design",
+    "phase" : "Architecture",
+    "sprintId" : null,
+    "path" : "artifacts/lifecycle/04-architecture/hld.md",
+    "status" : "MISSING",
+    "version" : 0,
+    "requiredSections" : [ "Architecture Overview", "Components", "Data Model", "Integrations", "Security & Compliance", "Open Questions" ],
+    "present" : false
+  } ]
+}

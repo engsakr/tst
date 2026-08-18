@@ -1,0 +1,96 @@
+id: sprint-readiness-gate
+name: Sprint Readiness Gate
+version: 1.0.0
+stage: sprint-readiness
+description: Validate that sprint scope and stories are ready for development without unresolved blocker decisions.
+
+owners:
+  accountable:
+    - Product Owner
+    - Scrum Master
+  consulted:
+    - Scrum Planner
+    - Tech Lead
+    - QA Engineer
+  approvers:
+    - Product Owner
+    - Tech Lead
+
+principles:
+  - Stories must be small, testable, and tied to approved requirements.
+  - Sprint scope must expose dependencies, risks, and blockers.
+  - Readiness is about evidence, not optimism.
+
+entry_criteria:
+  - Requirements and architecture are approved or exceptions are documented.
+  - Candidate stories exist or are ready to generate.
+
+exit_criteria:
+  - Sprint goal is clear.
+  - Stories have acceptance criteria, dependencies, risks, and test notes.
+  - Blocked stories are not treated as ready.
+  - Product Owner and Tech Lead approval evidence exists.
+
+required_artifacts:
+  - lifecycle/06-sprint-planning/sprint-plan.md
+
+required_sections:
+  lifecycle/06-sprint-planning/sprint-plan.md:
+    - Sprint Goal
+    - Stories
+    - Dependencies
+    - Risks
+    - Open Questions
+    - Approval
+
+checks:
+  - id: required-artifacts-exist
+    type: file_exists
+    severity: blocker
+    description: Sprint plan must exist.
+
+  - id: required-sections-present
+    type: markdown_sections
+    severity: blocker
+    description: Sprint plan must include readiness sections.
+
+  - id: open-questions-managed
+    type: open_questions_threshold
+    max_allowed: 3
+    severity: major
+    description: Unresolved sprint questions must be below threshold.
+
+  - id: approval-evidence
+    type: approval_table
+    required_roles:
+      - Product Owner
+      - Tech Lead
+    allowed_decisions:
+      - Approved
+    severity: blocker
+    description: Product and technical readiness approval are required.
+
+  - id: ai-sprint-readiness-review
+    type: ai_review
+    mode: manual
+    agent: scrum-planner
+    minimum_score: 85
+    severity: major
+    review_focus:
+      - Story readiness
+      - Acceptance criteria quality
+      - Dependencies
+      - Testability
+      - Sprint risks
+
+decision:
+  fail_on:
+    - blocker
+  ai_review:
+    required: true
+    minimum_score: 85
+  human_approval:
+    required: true
+
+report:
+  output: .aisdlc/generated/reports/sprint-readiness-gate-report.md
