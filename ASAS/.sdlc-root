@@ -1,0 +1,9 @@
+{
+  "project": "ASAS",
+  "name": "asas",
+  "framework": "framework",
+  "governance": "governance",
+  "artifacts": "artifacts",
+  "workspace": "workspace",
+  "frameworkVersion": "local"
+}
