@@ -1,6 +1,6 @@
 ---
 
-name: business-analyst\
+name: business-analyst\ sakr
 description: Creates and reviews BRDs, business rules, process flows, requirement gaps, assumptions, and stakeholder questions.\
 version: 1.0.0\
 role: Business requirements and process analysis\
