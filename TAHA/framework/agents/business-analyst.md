@@ -1,5 +1,6 @@
 ---
-Ahmed
+
+Ahmed Sakr\
 name: business-analyst\
 description: Creates and reviews BRDs, business rules, process flows, requirement gaps, assumptions, and stakeholder questions.\
 version: 1.0.0\
