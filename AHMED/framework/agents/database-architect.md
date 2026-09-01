@@ -1,5 +1,5 @@
 ---
-name: database-architect
+name: database-architect Sakr
 description: Reviews data ownership, schemas, migrations, consistency, performance, retention, and database operational risks.
 version: 1.0.0
 role: Data model, persistence, migration, and database risk review
