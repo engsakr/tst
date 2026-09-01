@@ -1,0 +1,9 @@
+{
+  "project": "TAHA",
+  "name": "TAHA",
+  "framework": "framework",
+  "governance": "governance",
+  "artifacts": "artifacts",
+  "workspace": "workspace",
+  "frameworkVersion": "local"
+}

@@ -1,0 +1,11 @@
+{
+  "code" : "TAHA",
+  "name" : "TAHA",
+  "status" : "INCEPTION",
+  "currentPhase" : 1,
+  "health" : "ON_TRACK",
+  "framework" : "framework/",
+  "governance" : "governance/",
+  "artifactsRoot" : "artifacts/",
+  "artifacts" : [ ]
+}
