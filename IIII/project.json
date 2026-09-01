@@ -1,0 +1,11 @@
+{
+  "code" : "IIII",
+  "name" : "iiii",
+  "status" : "INCEPTION",
+  "currentPhase" : 0,
+  "health" : "ON_TRACK",
+  "framework" : "framework/",
+  "governance" : "governance/",
+  "artifactsRoot" : "artifacts/",
+  "artifacts" : [ ]
+}
