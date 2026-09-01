@@ -1,0 +1,9 @@
+{
+  "project": "LASTTEST1",
+  "name": "LastTest1",
+  "framework": "framework",
+  "governance": "governance",
+  "artifacts": "artifacts",
+  "workspace": "workspace",
+  "frameworkVersion": "local"
+}
