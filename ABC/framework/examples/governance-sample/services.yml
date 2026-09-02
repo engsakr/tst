@@ -1,0 +1,21 @@
+services:
+  gateway-service:
+    repo: git@github.com:company/ive-gateway-service.git
+    branch: develop
+    path: workspace/gateway-service
+    type: backend
+    language: java
+    framework: spring-boot
+    commands:
+      build: ./mvnw clean verify
+      test: ./mvnw test
+    runtime:
+      agents:
+        - developer
+        - qa-engineer
+        - security-reviewer
+      commands:
+        - review/pr
+        - review/security
+        - qa/generate-test-cases
+        - development/implement-story

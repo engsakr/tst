@@ -1,0 +1,108 @@
+id: release-gate
+name: Release Gate
+version: 1.0.0
+stage: release
+description: Validate that release notes, deployment checklist, rollback plan, risks, and approvals are ready before deployment.
+
+owners:
+  accountable:
+    - Release Manager
+  consulted:
+    - Product Owner
+    - Tech Lead
+    - QA Lead
+    - DevOps Engineer
+    - Security Reviewer
+  approvers:
+    - Product Owner
+    - Tech Lead
+    - Release Manager
+
+principles:
+  - Release scope must be traceable to approved work.
+  - Deployment must be executable and verifiable.
+  - Rollback must have clear triggers, owners, and validation steps.
+  - Known issues and residual risks must not be hidden.
+
+entry_criteria:
+  - Testing gate has passed or exceptions are documented.
+  - Release scope and target services are known.
+  - Deployment and rollback standards are available.
+
+exit_criteria:
+  - Release notes explain scope, risks, and approval.
+  - Deployment checklist includes prechecks, steps, verification, and monitoring.
+  - Rollback plan includes triggers, steps, validation, and escalation.
+  - Required human approval evidence exists.
+
+required_artifacts:
+  - lifecycle/10-release/release-notes.md
+  - lifecycle/10-release/deployment-checklist.md
+  - lifecycle/10-release/rollback-plan.md
+
+required_sections:
+  lifecycle/10-release/release-notes.md:
+    - Overview
+    - Risks
+    - Approval
+  lifecycle/10-release/deployment-checklist.md:
+    - Overview
+    - Steps
+    - Verification
+  lifecycle/10-release/rollback-plan.md:
+    - Overview
+    - Triggers
+    - Steps
+
+checks:
+  - id: required-artifacts-exist
+    type: file_exists
+    severity: blocker
+    description: Release notes, deployment checklist, and rollback plan must exist.
+
+  - id: required-sections-present
+    type: markdown_sections
+    severity: blocker
+    description: Release artifacts must include required sections.
+
+  - id: open-questions-managed
+    type: open_questions_threshold
+    max_allowed: 2
+    severity: major
+    description: Release-stage open questions must be very limited and explicitly understood.
+
+  - id: approval-evidence
+    type: approval_table
+    required_roles:
+      - Product Owner
+      - Tech Lead
+      - Release Manager
+    allowed_decisions:
+      - Approved
+    severity: blocker
+    description: Product, technical, and release approval are required.
+
+  - id: ai-release-readiness-review
+    type: ai_review
+    mode: manual
+    agent: release-manager
+    minimum_score: 90
+    severity: major
+    review_focus:
+      - Scope traceability
+      - Deployment readiness
+      - Rollback realism
+      - Known issues
+      - Residual release risk
+
+decision:
+  fail_on:
+    - blocker
+  ai_review:
+    required: true
+    minimum_score: 90
+  human_approval:
+    required: true
+
+report:
+  output: .aisdlc/generated/reports/release-gate-report.md
