@@ -1,0 +1,9 @@
+{
+  "project": "CRM",
+  "name": "Customer CRM",
+  "framework": "framework",
+  "governance": "governance",
+  "artifacts": "artifacts",
+  "workspace": "workspace",
+  "frameworkVersion": "local"
+}

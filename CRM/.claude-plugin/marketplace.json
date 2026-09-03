@@ -1,0 +1,11 @@
+{
+  "name": "sdlc-hub",
+  "owner": { "name": "AI-SDLC Platform" },
+  "plugins": [
+    {
+      "name": "sdlc",
+      "source": "./framework",
+      "description": "This project's AI-SDLC framework: agents, commands, skills, gates, schemas, and templates."
+    }
+  ]
+}

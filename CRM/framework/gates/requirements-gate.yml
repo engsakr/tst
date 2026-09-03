@@ -1,0 +1,111 @@
+id: requirements-gate
+name: Requirements Gate
+version: 1.0.0
+stage: requirements
+description: Validate that BRD and PRD are complete, testable, reviewed, and ready for architecture and sprint planning.
+
+owners:
+  accountable:
+    - Product Owner
+  consulted:
+    - Business Analyst
+    - QA Engineer
+    - Solution Architect
+  approvers:
+    - Product Owner
+    - Tech Lead
+
+principles:
+  - Requirements must be clear enough for architecture, development, and QA.
+  - Business rules, assumptions, and open questions must not be mixed together.
+  - Acceptance criteria and non-functional requirements must be testable or explicitly flagged.
+
+entry_criteria:
+  - Idea or business input has been accepted for requirements work.
+  - Stakeholders and domain terms are known or documented as open questions.
+
+exit_criteria:
+  - BRD captures business problem, goals, scope, rules, assumptions, and approval.
+  - PRD captures product scope, personas, functional requirements, NFRs, acceptance criteria, dependencies, risks, and approval.
+  - Open questions are below threshold or explicitly approved as non-blocking.
+  - Product Owner and Tech Lead approval evidence exists.
+
+required_artifacts:
+  - lifecycle/02-business-analysis/brd.md
+  - lifecycle/03-requirements/prd.md
+
+required_sections:
+  lifecycle/02-business-analysis/brd.md:
+    - Overview
+    - Business Problem
+    - Business Goals
+    - Scope
+    - Business Rules
+    - Assumptions
+    - Open Questions
+    - Approval
+  lifecycle/03-requirements/prd.md:
+    - Product Summary
+    - Problem Statement
+    - Goals
+    - Non-Goals
+    - User Personas
+    - Functional Requirements
+    - Non-Functional Requirements
+    - Acceptance Criteria
+    - Dependencies
+    - Risks
+    - Open Questions
+    - Approval
+
+checks:
+  - id: required-artifacts-exist
+    type: file_exists
+    severity: blocker
+    description: BRD and PRD must exist.
+
+  - id: required-sections-present
+    type: markdown_sections
+    severity: blocker
+    description: Required BRD and PRD sections must be present.
+
+  - id: open-questions-managed
+    type: open_questions_threshold
+    max_allowed: 3
+    severity: major
+    description: Unresolved open questions must be low enough for architecture to proceed.
+
+  - id: approval-evidence
+    type: approval_table
+    required_roles:
+      - Product Owner
+      - Tech Lead
+    allowed_decisions:
+      - Approved
+    severity: blocker
+    description: Product Owner and Tech Lead approval are required.
+
+  - id: ai-requirements-quality-review
+    type: ai_review
+    mode: manual
+    agent: business-analyst
+    minimum_score: 85
+    severity: major
+    review_focus:
+      - Requirement clarity
+      - Business rule completeness
+      - Acceptance criteria testability
+      - Non-functional requirement quality
+      - Dependencies and risks
+
+decision:
+  fail_on:
+    - blocker
+  ai_review:
+    required: true
+    minimum_score: 85
+  human_approval:
+    required: true
+
+report:
+  output: .aisdlc/generated/reports/requirements-gate-report.md

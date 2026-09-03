@@ -1,0 +1,11 @@
+{
+  "code" : "CRM",
+  "name" : "Customer CRM",
+  "status" : "INCEPTION",
+  "currentPhase" : 1,
+  "health" : "ON_TRACK",
+  "framework" : "framework/",
+  "governance" : "governance/",
+  "artifactsRoot" : "artifacts/",
+  "artifacts" : [ ]
+}
