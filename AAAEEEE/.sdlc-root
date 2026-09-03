@@ -1,0 +1,9 @@
+{
+  "project": "AAAEEEE",
+  "name": "eeee",
+  "framework": "framework",
+  "governance": "governance",
+  "artifacts": "artifacts",
+  "workspace": "workspace",
+  "frameworkVersion": "local"
+}
