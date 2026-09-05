@@ -1,4 +1,4 @@
-# CRM — Customer CRM
+# CRM — CRM
 
 Repository layout:
 

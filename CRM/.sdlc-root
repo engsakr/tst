@@ -1,6 +1,6 @@
 {
   "project": "CRM",
-  "name": "Customer CRM",
+  "name": "CRM",
   "framework": "framework",
   "governance": "governance",
   "artifacts": "artifacts",
