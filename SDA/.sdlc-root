@@ -1,0 +1,9 @@
+{
+  "project": "SDA",
+  "name": "asds",
+  "framework": "framework",
+  "governance": "governance",
+  "artifacts": "artifacts",
+  "workspace": "workspace",
+  "frameworkVersion": "local"
+}
