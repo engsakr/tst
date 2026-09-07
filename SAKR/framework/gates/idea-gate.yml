@@ -1,0 +1,89 @@
+id: idea-gate
+name: Idea Gate
+version: 1.0.0
+stage: idea
+description: Validate that an idea is clear enough to justify business analysis and stakeholder review.
+
+owners:
+  accountable:
+    - Product Owner
+  consulted:
+    - Business Analyst
+    - Solution Architect
+    - UX Reviewer
+
+principles:
+  - Ideas may be uncertain, but uncertainty must be visible.
+  - The gate validates clarity and decision readiness, not implementation detail.
+  - Human stakeholders decide whether the idea proceeds.
+
+entry_criteria:
+  - Raw idea input exists.
+  - Project domain and stakeholder context are available or missing context is listed.
+
+exit_criteria:
+  - Business problem and expected value are understandable.
+  - Scope, non-scope, assumptions, risks, and open questions are documented.
+  - Product Owner has enough evidence to proceed, refine, defer, or reject.
+
+required_artifacts:
+  - lifecycle/01-idea/idea-brief.md
+
+required_sections:
+  lifecycle/01-idea/idea-brief.md:
+    - Overview
+    - Scope
+    - Open Questions
+    - Approval
+
+checks:
+  - id: required-artifacts-exist
+    type: file_exists
+    severity: blocker
+    description: Idea brief must exist before review.
+
+  - id: required-sections-present
+    type: markdown_sections
+    severity: blocker
+    description: Idea brief must contain the minimum review sections.
+
+  - id: open-questions-managed
+    type: open_questions_threshold
+    max_allowed: 5
+    severity: major
+    description: Early ideas may have questions, but the list must remain manageable.
+
+  - id: approval-evidence
+    type: approval_table
+    required_roles:
+      - Product Owner
+    allowed_decisions:
+      - Approved
+      - Proceed
+    severity: blocker
+    description: Product approval or proceed decision is required.
+
+  - id: ai-idea-quality-review
+    type: ai_review
+    mode: manual
+    agent: idea-analyst
+    minimum_score: 80
+    severity: major
+    review_focus:
+      - Problem clarity
+      - Business value
+      - Assumptions
+      - Risks
+      - Open questions
+
+decision:
+  fail_on:
+    - blocker
+  ai_review:
+    required: true
+    minimum_score: 80
+  human_approval:
+    required: true
+
+report:
+  output: .aisdlc/generated/reports/idea-gate-report.md

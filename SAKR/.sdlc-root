@@ -1,0 +1,9 @@
+{
+  "project": "SAKR",
+  "name": "Sakr",
+  "framework": "framework",
+  "governance": "governance",
+  "artifacts": "artifacts",
+  "workspace": "workspace",
+  "frameworkVersion": "local"
+}
