@@ -19,7 +19,7 @@ d
 Priority: HIGH
 Shoppers can add any product to a personal wishlist.
 
-REQ-002  Wishlist Sharing
+### REQ-002  Wishlist Sharing
 Status: Changed
 Backlog: BL-002
 Impact: HLD MUST_UPDATE
