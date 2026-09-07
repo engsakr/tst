@@ -1,5 +1,5 @@
 ## Functional Requirements
 
-### REQ-001 Wishlist
+### REQ-002 Wishlist2
 Priority: HIGH
-Shoppers can add any product to a personal wishlist.
+Shoppers can add any product to a personal wishlist2.
