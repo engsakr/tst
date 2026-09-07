@@ -23,3 +23,7 @@ Shoppers can add any product to a personal wishlist.
 Status: Changed
 Backlog: BL-002
 Impact: HLD MUST_UPDATE
+
+### REQ-003  Wishlist Test
+Priority: HIGH
+Test Test
