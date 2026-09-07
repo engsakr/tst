@@ -24,6 +24,6 @@ Status: Changed
 Backlog: BL-002
 Impact: HLD MUST_UPDATE
 
-### REQ-003  Wishlist Test
+### REQ-003  Wishlist TestTest
 Priority: HIGH
 Test Test
