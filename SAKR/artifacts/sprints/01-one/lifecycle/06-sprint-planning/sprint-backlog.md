@@ -6,4 +6,5 @@ ge
 | Ref | Title | Type | Priority | Estimate | State |
 |---|---|---|---|---|---|
 | BL-002 | Wishlist Sharing | STORY | MEDIUM |  | Ready |
+| BL-003 | Wishlist Test | STORY | HIGH |  | Ready |
 <!-- aisdlc:end committed-items -->
