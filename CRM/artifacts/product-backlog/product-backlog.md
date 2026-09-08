@@ -18,3 +18,11 @@ TBD.
 
 - None outstanding.
 
+### BL-001 Wishlist1
+Type: STORY
+Requirement: REQ-001
+Priority: HIGH
+Estimate:
+
+Priority: HIGH
+Shoppers can add any product to a personal wishlist1.
