@@ -1,0 +1,94 @@
+id: testing-gate
+name: Testing Gate
+version: 1.0.0
+stage: testing
+description: Validate that test evidence, coverage, defects, and residual quality risks are documented before release preparation.
+
+owners:
+  accountable:
+    - QA Lead
+  consulted:
+    - QA Engineer
+    - Product Owner
+    - Tech Lead
+  approvers:
+    - QA Lead
+    - Product Owner
+
+principles:
+  - Test evidence must trace to acceptance criteria and risks.
+  - Known defects and coverage gaps must be visible.
+  - Manual, automated, and missing validation evidence must be distinguished.
+
+entry_criteria:
+  - Development work is complete enough for validation.
+  - Stories and acceptance criteria are available.
+  - Test execution or coverage evidence exists or missing evidence is documented.
+
+exit_criteria:
+  - Test summary documents scope, coverage, defects, open questions, and approval.
+  - Critical acceptance criteria have validation evidence or documented risk acceptance.
+  - QA and Product approval evidence exists.
+
+required_artifacts:
+  - lifecycle/09-testing/test-summary.md
+
+required_sections:
+  lifecycle/09-testing/test-summary.md:
+    - Summary
+    - Coverage
+    - Defects
+    - Open Questions
+    - Approval
+
+checks:
+  - id: required-artifacts-exist
+    type: file_exists
+    severity: blocker
+    description: Test summary must exist.
+
+  - id: required-sections-present
+    type: markdown_sections
+    severity: blocker
+    description: Test summary must include required quality evidence sections.
+
+  - id: open-questions-managed
+    type: open_questions_threshold
+    max_allowed: 3
+    severity: major
+    description: Unresolved testing questions must be manageable before release.
+
+  - id: approval-evidence
+    type: approval_table
+    required_roles:
+      - QA Lead
+      - Product Owner
+    allowed_decisions:
+      - Approved
+    severity: blocker
+    description: QA and Product approval are required.
+
+  - id: ai-test-coverage-review
+    type: ai_review
+    mode: manual
+    agent: qa-engineer
+    minimum_score: 85
+    severity: major
+    review_focus:
+      - Acceptance criteria coverage
+      - Regression risk
+      - Defect visibility
+      - Automation gaps
+      - Release quality risk
+
+decision:
+  fail_on:
+    - blocker
+  ai_review:
+    required: true
+    minimum_score: 85
+  human_approval:
+    required: true
+
+report:
+  output: .aisdlc/generated/reports/testing-gate-report.md

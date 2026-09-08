@@ -1,0 +1,9 @@
+{
+  "project": "EWWE",
+  "name": "wewe",
+  "framework": "framework",
+  "governance": "governance",
+  "artifacts": "artifacts",
+  "workspace": "workspace",
+  "frameworkVersion": "local"
+}

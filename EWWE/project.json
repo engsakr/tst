@@ -1,0 +1,21 @@
+{
+  "code" : "EWWE",
+  "name" : "wewe",
+  "status" : "INCEPTION",
+  "currentPhase" : 1,
+  "health" : "ON_TRACK",
+  "framework" : "framework/",
+  "governance" : "governance/",
+  "artifactsRoot" : "artifacts/",
+  "artifacts" : [ {
+    "key" : "product-backlog",
+    "type" : "Product Backlog",
+    "phase" : "Product Backlog",
+    "sprintId" : null,
+    "path" : "EWWE/artifacts/product-backlog/product-backlog.md",
+    "status" : "DRAFT",
+    "version" : 1,
+    "requiredSections" : [ "Backlog Items", "Priorities", "Dependencies", "Open Questions" ],
+    "present" : true
+  } ]
+}
