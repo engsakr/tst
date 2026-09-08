@@ -2,7 +2,7 @@
 Priority: HIGH
 Shoppers can add any product to a personal wishlist.
 
-## Overvie
+## Overview
 rtgrtg
 ## User Stories
 rtgrtg
