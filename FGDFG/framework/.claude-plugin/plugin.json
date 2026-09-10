@@ -1,0 +1,6 @@
+{
+  "name": "sdlc",
+  "version": "0.1.0",
+  "description": "AI-SDLC framework for this project — agents, commands, skills, gates, schemas, and templates for governed delivery.",
+  "author": { "name": "AI-SDLC Platform" }
+}
