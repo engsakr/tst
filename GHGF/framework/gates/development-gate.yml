@@ -1,0 +1,80 @@
+id: development-gate
+name: Development Gate
+version: 1.0.0
+stage: development
+description: Validate that a service repository has AI runtime context, implementation evidence, and review readiness.
+
+owners:
+  accountable:
+    - Tech Lead
+  consulted:
+    - Developer
+    - QA Engineer
+    - Security Reviewer
+  approvers:
+    - Tech Lead
+
+principles:
+  - Implementation must be scoped to an approved story.
+  - Service runtime files must tell AI agents how to work safely in the service.
+  - Project-specific gates may add shell_command checks for build, test, lint, or security scans.
+
+entry_criteria:
+  - Service runtime has been materialized.
+  - Approved story or change request exists.
+  - Service repository is available in the governance workspace.
+
+exit_criteria:
+  - AGENTS.md and sdlc.service.yml exist in the service repository.
+  - AGENTS.md contains development rules.
+  - AI review prompt is generated for qualitative implementation review when configured.
+  - Project-specific build/test evidence is attached or enforced by custom shell_command checks.
+
+required_artifacts:
+  - AGENTS.md
+  - sdlc.service.yml
+
+required_sections:
+  AGENTS.md:
+    - Rules
+
+checks:
+  - id: runtime-files-exist
+    type: file_exists
+    severity: blocker
+    description: Service runtime files must exist.
+
+  - id: runtime-instructions-present
+    type: markdown_sections
+    severity: major
+    description: AGENTS.md must include working rules for AI and developers.
+
+  - id: ai-development-review
+    type: ai_review
+    mode: manual
+    agent: developer
+    minimum_score: 80
+    severity: major
+    review_focus:
+      - Story scope alignment
+      - Test coverage
+      - Error handling
+      - Standards alignment
+      - Merge risk
+
+customization_guidance:
+  - Add shell_command checks in project-specific gates when every service shares the same command.
+  - Prefer service-specific commands from sdlc.service.yml when commands differ by language or framework.
+  - Do not hard-code npm, Maven, Gradle, or other commands in the generic framework gate unless your organization standardizes on them.
+
+decision:
+  fail_on:
+    - blocker
+  ai_review:
+    required: true
+    minimum_score: 80
+  human_approval:
+    required: false
+
+report:
+  output: .aisdlc/generated/reports/development-gate-report.md

@@ -1,0 +1,96 @@
+id: architecture-gate
+name: Architecture Gate
+version: 1.0.0
+stage: architecture
+description: Validate that architecture artifacts are complete, standards-aligned, and ready for story generation and implementation.
+
+owners:
+  accountable:
+    - Tech Lead
+  consulted:
+    - Solution Architect
+    - Security Reviewer
+    - DevOps Engineer
+    - Database Architect
+    - Integration Architect
+  approvers:
+    - Tech Lead
+    - Solution Architect
+
+principles:
+  - Architecture must trace to approved requirements.
+  - Significant decisions must be recorded or explicitly listed as pending ADRs.
+  - Security, operations, integration, and data concerns must be considered before implementation.
+
+entry_criteria:
+  - Requirements gate has passed or exceptions are documented.
+  - PRD and relevant standards are available.
+
+exit_criteria:
+  - HLD documents context, components, contracts, data/integration flow, risks, and decisions.
+  - Required ADRs are created or listed as pending with owners.
+  - Architecture risks and trade-offs are explicit.
+  - Human approval evidence exists.
+
+required_artifacts:
+  - lifecycle/04-architecture/hld.md
+
+required_sections:
+  lifecycle/04-architecture/hld.md:
+    - Overview
+    - Architecture Decisions
+    - Risks
+    - Open Questions
+    - Approval
+
+checks:
+  - id: required-artifacts-exist
+    type: file_exists
+    severity: blocker
+    description: HLD must exist.
+
+  - id: required-sections-present
+    type: markdown_sections
+    severity: blocker
+    description: HLD must include minimum architecture review sections.
+
+  - id: open-questions-managed
+    type: open_questions_threshold
+    max_allowed: 3
+    severity: major
+    description: Unresolved architecture questions must be manageable before story generation.
+
+  - id: approval-evidence
+    type: approval_table
+    required_roles:
+      - Tech Lead
+      - Solution Architect
+    allowed_decisions:
+      - Approved
+    severity: blocker
+    description: Architecture approval evidence is required.
+
+  - id: ai-architecture-quality-review
+    type: ai_review
+    mode: manual
+    agent: solution-architect
+    minimum_score: 85
+    severity: major
+    review_focus:
+      - Requirements traceability
+      - Service boundaries
+      - Integration and data flow
+      - Security and operations
+      - Decision quality
+
+decision:
+  fail_on:
+    - blocker
+  ai_review:
+    required: true
+    minimum_score: 85
+  human_approval:
+    required: true
+
+report:
+  output: .aisdlc/generated/reports/architecture-gate-report.md
